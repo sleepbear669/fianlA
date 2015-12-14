@@ -33,7 +33,6 @@ public class RestaurantProtocol implements Runnable {
             OutputStream out = clntSock.getOutputStream();
             UserPointDecoder userPointDecoder = new UserPointDecoder();
             UserPoint decode = userPointDecoder.decode(in);
-            System.out.println(decode.getX());
             List<RestaurantInfo> restaurantInfo = db.getRestaurantInfo(decode);
             byte[] encode = new RestaurantInfoEncoder().encode(restaurantInfo);
             out.write(encode);
